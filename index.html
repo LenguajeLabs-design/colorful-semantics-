@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f6f2" />
+    <meta
+      name="description"
+      content="Colorful Semantics Studio: a calm practice space for noticing student meaning and choosing the smallest useful prompt."
+    />
+    <title>Colorful Semantics Studio · Analysis Lab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="site-header" aria-label="Primary navigation">
+        <a class="brand" href="#top" aria-label="Colorful Semantics Studio home">
+          <span class="brand-mark" aria-hidden="true">
+            <i></i><i></i><i></i><i></i>
+          </span>
+          <span>
+            <strong>Colorful Semantics</strong>
+            <small>Studio</small>
+          </span>
+        </a>
+
+        <nav class="top-nav" aria-label="Studio sections">
+          <button class="nav-link is-active" type="button" data-view="lab">Analysis Lab</button>
+          <button class="nav-link" type="button" data-view="library">Practice library</button>
+        </nav>
+
+        <div class="header-actions">
+          <span class="saved-status"><span class="status-dot"></span>Saved locally</span>
+          <button class="avatar-button" type="button" aria-label="Open profile menu">FO</button>
+        </div>
+      </header>
+
+      <main id="top">
+        <section class="hero-wrap page-width" aria-labelledby="page-title">
+          <div class="hero-copy">
+            <div class="eyebrow"><span class="eyebrow-line"></span>Professional learning · Language noticing</div>
+            <h1 id="page-title">Notice the meaning<br /><em>before</em> you fix the words.</h1>
+            <p class="hero-intro">
+              Practice reading a learner response for the idea underneath it, then choose the smallest prompt that keeps the thinking moving.
+            </p>
+          </div>
+
+          <div class="practice-progress" aria-label="Practice progress">
+            <div class="progress-label"><span>Practice set</span><strong id="progress-count">01 <small>/ 03</small></strong></div>
+            <div class="progress-track"><span id="progress-bar"></span></div>
+            <p>One response, one useful next move.</p>
+          </div>
+        </section>
+
+        <section class="workspace page-width" aria-label="Student language analysis lab">
+          <div class="workspace-toolbar">
+            <div>
+              <span class="section-kicker">Student Language Analysis Lab</span>
+              <h2 id="sample-title">When the idea is already there</h2>
+            </div>
+            <div class="toolbar-actions">
+              <button class="quiet-button" id="new-response" type="button">
+                <span aria-hidden="true">↻</span> New learner response
+              </button>
+              <button class="classroom-button" id="open-classroom" type="button">
+                Open in Classroom Mode <span aria-hidden="true">↗</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="lab-grid">
+            <article class="response-card card-surface">
+              <div class="card-topline">
+                <span class="label-chip" id="sample-subject">SCIENCE EXPLANATION</span>
+                <span class="response-number" id="response-number">Response 01</span>
+              </div>
+              <div class="prompt-block">
+                <span class="mini-label">Teacher prompt</span>
+                <p id="teacher-prompt">What helps a plant grow?</p>
+              </div>
+              <div class="learner-block">
+                <span class="mini-label">Learner response</span>
+                <blockquote id="learner-response">“Plants need water because it help grow.”</blockquote>
+              </div>
+              <div class="response-note">
+                <span class="note-icon" aria-hidden="true">i</span>
+                <p>Read for the message first. The ending is unfinished, but the relationship is visible.</p>
+              </div>
+              <div class="response-footer">
+                <span class="level-tag" id="sample-level">Developing explanation</span>
+                <button class="text-button" id="listen-response" type="button"><span aria-hidden="true">◉</span> Read aloud</button>
+              </div>
+            </article>
+
+            <section class="analysis-column" aria-labelledby="meaning-heading">
+              <div class="analysis-step">
+                <div class="step-heading">
+                  <span class="step-number">1</span>
+                  <div>
+                    <span class="mini-label">Meaning check</span>
+                    <h3 id="meaning-heading">What meaning is present or missing?</h3>
+                  </div>
+                </div>
+                <p class="step-help">Select all that apply. Your job is to name the message, not grade the sentence.</p>
+
+                <div class="meaning-options" id="meaning-options">
+                  <button class="meaning-option" type="button" data-meaning="water" aria-pressed="false">
+                    <span class="option-icon">✓</span>
+                    <span><strong>The plant needs water</strong><small>Key idea is communicated</small></span>
+                  </button>
+                  <button class="meaning-option" type="button" data-meaning="cause" aria-pressed="false">
+                    <span class="option-icon">→</span>
+                    <span><strong>Water helps it grow</strong><small>A cause-and-effect link is attempted</small></span>
+                  </button>
+                  <button class="meaning-option" type="button" data-meaning="detail" aria-pressed="false">
+                    <span class="option-icon">＋</span>
+                    <span><strong>A specific detail about how</strong><small>Useful detail is still missing</small></span>
+                  </button>
+                </div>
+                <div class="selection-feedback" id="meaning-feedback" role="status" aria-live="polite">
+                  Start by naming the meaning you can already hear.
+                </div>
+              </div>
+
+              <div class="analysis-step prompt-step">
+                <div class="step-heading">
+                  <span class="step-number">2</span>
+                  <div>
+                    <span class="mini-label">Smallest useful prompt</span>
+                    <h3>What would you ask next?</h3>
+                  </div>
+                  <span class="quiz-pill">Quick quiz</span>
+                </div>
+                <p class="step-help">Choose the prompt that adds just enough support for this learner to extend the idea.</p>
+
+                <div class="prompt-options" id="prompt-options">
+                  <button class="prompt-option" type="button" data-correct="false">
+                    <span class="option-letter">A</span>
+                    <span>Can you say that again correctly?</span>
+                  </button>
+                  <button class="prompt-option" type="button" data-correct="true">
+                    <span class="option-letter">B</span>
+                    <span>Tell me more about how water helps it grow.</span>
+                  </button>
+                  <button class="prompt-option" type="button" data-correct="false">
+                    <span class="option-letter">C</span>
+                    <span>What are the three things a plant needs?</span>
+                  </button>
+                </div>
+                <div class="prompt-feedback" id="prompt-feedback" role="status" aria-live="polite" hidden></div>
+              </div>
+            </section>
+
+            <aside class="reasoning-card card-surface" aria-labelledby="reasoning-heading">
+              <div class="reasoning-header">
+                <div>
+                  <span class="mini-label">Your reasoning</span>
+                  <h3 id="reasoning-heading">Keep the idea in view</h3>
+                </div>
+                <span class="spark-icon" aria-hidden="true">✦</span>
+              </div>
+              <div class="reasoning-list">
+                <div class="reasoning-row" data-reason="meaning">
+                  <span class="reasoning-check">1</span>
+                  <div><strong>Meaning before form</strong><p>Name what the learner is communicating.</p></div>
+                </div>
+                <div class="reasoning-row" data-reason="bridge">
+                  <span class="reasoning-check">2</span>
+                  <div><strong>Build a bridge</strong><p>Keep the original idea; invite one useful extension.</p></div>
+                </div>
+                <div class="reasoning-row" data-reason="recast">
+                  <span class="reasoning-check">3</span>
+                  <div><strong>Model, don’t replace</strong><p>Leave room for the learner to do the next piece.</p></div>
+                </div>
+              </div>
+              <button class="reveal-button" id="reveal-reasoning" type="button">Reveal the reasoning <span aria-hidden="true">↓</span></button>
+              <div class="reasoning-reveal" id="reasoning-reveal" hidden>
+                <p><strong>Why B is smallest:</strong> the message already has a topic and a reason. The prompt asks for one more detail without starting over or demanding a full correction.</p>
+              </div>
+              <div class="coach-note"><span aria-hidden="true">✦</span><p><strong>Coach’s note:</strong> A prompt is useful when it changes the learner’s next move—not when it makes the teacher’s sentence look finished.</p></div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="library-preview page-width" id="library-panel" aria-labelledby="library-heading">
+          <div class="library-heading">
+            <div>
+              <span class="section-kicker">Keep practicing</span>
+              <h2 id="library-heading">Three ways to read a response</h2>
+            </div>
+            <button class="text-button" id="view-library" type="button">View all examples <span aria-hidden="true">→</span></button>
+          </div>
+          <div class="sample-cards" id="sample-cards">
+            <button class="sample-card is-selected" type="button" data-sample="0">
+              <span class="sample-color color-sun"></span><span><strong>Explain a process</strong><small>Science · Cause & effect</small></span><span class="sample-arrow">↗</span>
+            </button>
+            <button class="sample-card" type="button" data-sample="1">
+              <span class="sample-color color-coral"></span><span><strong>Retell an event</strong><small>Narrative · Sequence</small></span><span class="sample-arrow">↗</span>
+            </button>
+            <button class="sample-card" type="button" data-sample="2">
+              <span class="sample-color color-blue"></span><span><strong>Make a claim</strong><small>Opinion · Evidence</small></span><span class="sample-arrow">↗</span>
+            </button>
+          </div>
+        </section>
+      </main>
+
+      <div class="classroom-overlay" id="classroom-overlay" hidden>
+        <div class="classroom-shell">
+          <header class="classroom-header">
+            <div class="brand compact"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span><strong>Colorful Semantics</strong><small>Classroom Mode</small></span></div>
+            <button class="quiet-button light" id="close-classroom" type="button"><span aria-hidden="true">×</span> Back to analysis</button>
+          </header>
+          <main class="classroom-main" aria-labelledby="classroom-title">
+            <div class="classroom-context"><span class="label-chip">SCIENCE EXPLANATION</span><span>Think · Talk · Extend</span></div>
+            <h1 id="classroom-title">What helps a plant grow?</h1>
+            <p class="classroom-instruction">Read the response. What idea can you hear?</p>
+            <div class="classroom-response">“Plants need water because it help grow.”</div>
+            <div class="classroom-actions" id="classroom-actions">
+              <button type="button" class="classroom-choice" data-classroom="idea"><span aria-hidden="true">✓</span><span><strong>I can hear an idea.</strong><small>The plant needs water.</small></span></button>
+              <button type="button" class="classroom-choice" data-classroom="detail"><span aria-hidden="true">＋</span><span><strong>I want to add a detail.</strong><small>How does water help?</small></span></button>
+            </div>
+            <div class="classroom-next" id="classroom-next" hidden>
+              <span class="next-icon" aria-hidden="true">→</span>
+              <div><span class="mini-label">Try this next</span><p>Tell me more about how water helps it grow.</p></div>
+            </div>
+          </main>
+          <footer class="classroom-footer"><span>Teacher view · Example 01</span><span>← You can return to the lab at any time</span></footer>
+        </div>
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
