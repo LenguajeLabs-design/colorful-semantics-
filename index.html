@@ -1,239 +1,80 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#f7f6f2" />
-    <meta
-      name="description"
-      content="Colorful Semantics Studio: a calm practice space for noticing student meaning and choosing the smallest useful prompt."
-    />
-    <title>Colorful Semantics Studio · Analysis Lab</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <div class="app-shell">
-      <header class="site-header" aria-label="Primary navigation">
-        <a class="brand" href="#top" aria-label="Colorful Semantics Studio home">
-          <span class="brand-mark" aria-hidden="true">
-            <i></i><i></i><i></i><i></i>
-          </span>
-          <span>
-            <strong>Colorful Semantics</strong>
-            <small>Studio</small>
-          </span>
-        </a>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Colorful Semantics Studio</title>
+  <meta name="description" content="Learn Colorful Semantics by building, noticing, and teaching sentences." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%231f2940'/%3E%3Ccircle cx='23' cy='23' r='10' fill='%23f5a623'/%3E%3Cpath d='M17 42h30' stroke='%23f2cf45' stroke-width='10' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <style>
+    :root{--ink:#17213a;--muted:#63708a;--paper:#f7f8fc;--card:#fff;--line:#dce1ec;--orange:#f5a623;--yellow:#f2cf45;--green:#70b77e;--blue:#5b8def;--brown:#b97a57;--pink:#e987b7;--shadow:0 18px 45px rgba(35,46,75,.10)}
+    *{box-sizing:border-box} body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,ui-rounded,"SF Pro Rounded",system-ui,-apple-system,sans-serif;min-height:100vh}
+    button{font:inherit}.shell{max-width:1180px;margin:auto;padding:24px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:22px}.brand{display:flex;align-items:center;gap:12px}.mark{width:46px;height:46px;border-radius:14px;background:var(--ink);display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:9px;box-shadow:var(--shadow)}.mark i{display:block;border-radius:5px}.mark i:nth-child(1){background:var(--orange)}.mark i:nth-child(2){background:var(--yellow)}.mark i:nth-child(3){background:var(--green)}.mark i:nth-child(4){background:var(--blue)}h1{font-size:1.1rem;margin:0}.brand small{color:var(--muted)}.progress-wrap{display:flex;align-items:center;gap:10px;font-size:.85rem;color:var(--muted)}.progress{width:120px;height:8px;background:#e3e7ef;border-radius:999px;overflow:hidden}.progress span{display:block;height:100%;width:25%;background:var(--yellow);transition:.3s}
+    .layout{display:grid;grid-template-columns:230px minmax(0,1fr);gap:22px}.nav{background:#202a43;color:white;border-radius:24px;padding:16px;height:max-content;position:sticky;top:20px}.nav-label{font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;color:#9ea8bd;padding:7px 11px}.nav button{width:100%;display:flex;align-items:center;gap:10px;background:transparent;border:0;color:#c8cede;padding:13px 12px;border-radius:13px;text-align:left;cursor:pointer;margin:3px 0}.nav button:hover,.nav button.active{background:#34405f;color:#fff}.nav .num{display:grid;place-items:center;width:25px;height:25px;border-radius:8px;background:#465170;font-size:.78rem}.nav button.active .num{background:var(--yellow);color:#3c3515}.note{margin-top:20px;border-top:1px solid #3d4762;padding:16px 10px 4px;font-size:.78rem;line-height:1.5;color:#adb5c6}
+    main{min-width:0}.panel{display:none}.panel.active{display:block}.hero{background:var(--card);border:1px solid var(--line);border-radius:26px;padding:34px;box-shadow:var(--shadow)}.eyebrow{text-transform:uppercase;letter-spacing:.12em;font-size:.75rem;color:#7b6880;font-weight:800}.hero h2{font-size:clamp(2rem,4vw,3.5rem);line-height:1.04;max-width:760px;margin:10px 0 15px}.hero p{color:var(--muted);line-height:1.65;max-width:720px;font-size:1.05rem}.cta{border:0;border-radius:14px;padding:13px 18px;background:var(--ink);color:white;font-weight:750;cursor:pointer}.cta.secondary{background:#eef1f6;color:var(--ink)}
+    .role-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:28px 0 4px}.role{min-height:100px;padding:15px 12px;border-radius:16px;color:#1c263c}.role strong{font-size:.78rem;text-transform:uppercase;letter-spacing:.08em}.role span{display:block;font-size:1.2rem;font-weight:800;margin-top:9px}.orange{background:#f9c06a}.yellow{background:#f7df78}.green{background:#a9d7b1}.blue{background:#a9c4f8}.brown{background:#d9ad92}
+    .section-title{font-size:1.7rem;margin:4px 0 8px}.section-lead{color:var(--muted);line-height:1.6;margin:0 0 20px}.card{background:white;border:1px solid var(--line);border-radius:22px;padding:24px;box-shadow:0 8px 26px rgba(35,46,75,.06);margin-bottom:16px}.yellow-focus{background:linear-gradient(135deg,#fff 25%,#fff9d7);border-color:#ecd65c}.big-q{font-size:clamp(2rem,6vw,4.5rem);line-height:1;margin:12px 0}.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}.why-list{display:grid;gap:10px;margin-top:18px}.why-item{display:flex;gap:12px;align-items:flex-start;background:rgba(255,255,255,.7);padding:13px;border-radius:14px}.dot{width:12px;height:12px;background:var(--yellow);border:2px solid #a48a10;border-radius:4px;flex:0 0 auto;margin-top:5px}
+    .sentence{display:flex;flex-wrap:wrap;gap:9px;min-height:90px;padding:18px;border:2px dashed #cfd5e2;border-radius:18px;align-items:center;background:#fafbfe}.chip{border:0;border-bottom:4px solid rgba(0,0,0,.15);border-radius:12px;padding:12px 15px;font-weight:800;cursor:pointer;color:var(--ink);transition:.15s}.chip:hover{transform:translateY(-2px)}.chip.selected{outline:4px solid var(--ink);outline-offset:2px}.bank{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}.feedback{padding:13px 15px;border-radius:13px;background:#edf6ef;color:#245331;min-height:48px;margin-top:12px}.feedback.warn{background:#fff5d9;color:#6d5300}.action-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}
+    .scenario{display:flex;gap:10px;flex-wrap:wrap}.scenario button{border:1px solid var(--line);background:white;padding:10px 13px;border-radius:12px;cursor:pointer}.scenario button.active{background:var(--ink);color:white}.prompt-ladder{margin:18px 0 0;padding:0;list-style:none;counter-reset:ladder}.prompt-ladder li{counter-increment:ladder;display:flex;gap:13px;padding:13px 0;border-bottom:1px solid var(--line)}.prompt-ladder li:before{content:counter(ladder);display:grid;place-items:center;width:28px;height:28px;border-radius:9px;background:#eef1f6;font-weight:800;flex:0 0 auto}.prompt-ladder b{display:block}.prompt-ladder span{color:var(--muted);font-size:.9rem}.quiz-opt,.coach-opt{display:block;width:100%;text-align:left;border:1px solid var(--line);background:white;padding:14px;border-radius:13px;margin:9px 0;cursor:pointer}.quiz-opt:hover,.coach-opt:hover{border-color:#8290ad}.quiz-opt.correct,.coach-opt.correct{background:#e8f5eb;border-color:#70b77e}.quiz-opt.wrong,.coach-opt.wrong{background:#fff0ef;border-color:#d76c64}.fine{font-size:.8rem;color:var(--muted);line-height:1.5}.mobile-nav{display:none}
+    .workbench{display:grid;grid-template-columns:minmax(280px,.8fr) minmax(360px,1.2fr);gap:16px}.field-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field label{display:block;font-weight:800;font-size:.82rem;margin:0 0 6px}.field input,.preset{width:100%;border:1px solid var(--line);border-radius:12px;padding:12px;background:white;color:var(--ink);font:inherit}.field input:focus,.preset:focus{outline:3px solid #cbd5ee;border-color:#6276a5}.board{min-height:330px;background:#f8f9fd;border:1px solid var(--line);border-radius:20px;padding:20px;display:flex;flex-direction:column}.board.student{background:#fff}.board-top{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:18px}.view-badge{font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;font-weight:850;background:#e9edf5;padding:7px 9px;border-radius:9px}.board-prompt{font-size:1.05rem;color:var(--muted);min-height:28px}.board-sentence{display:flex;flex-wrap:wrap;align-items:center;gap:10px;min-height:150px}.board .chip{font-size:1.1rem;cursor:default}.ghost{background:white!important;color:#818ca2;border:2px dashed #aeb7c8;border-bottom-width:2px}.hidden-chunk{filter:blur(7px);user-select:none}.coach-head{display:flex;justify-content:space-between;gap:12px;align-items:center}.score-pill{background:var(--ink);color:white;border-radius:999px;padding:8px 12px;font-weight:800;font-size:.85rem}.meter{height:10px;background:#e7eaf1;border-radius:999px;overflow:hidden;margin:14px 0 24px}.meter span{display:block;height:100%;background:linear-gradient(90deg,var(--orange),var(--yellow));transition:.3s}.concept{background:#f4f6fa;border-left:5px solid var(--yellow);padding:14px 16px;border-radius:0 13px 13px 0;margin-top:14px}.coach-result{text-align:center;padding:25px}.coach-result strong{font-size:3rem;display:block}
+    @media(max-width:800px){.shell{padding:14px}.layout{display:block}.nav{display:none}.mobile-nav{display:flex;overflow:auto;gap:7px;margin-bottom:14px;padding-bottom:4px}.mobile-nav button{white-space:nowrap;border:1px solid var(--line);background:white;border-radius:999px;padding:9px 12px}.mobile-nav button.active{background:var(--ink);color:white}.hero,.card{padding:20px;border-radius:19px}.two,.workbench{grid-template-columns:1fr}.field-grid{grid-template-columns:1fr}.role-strip{grid-template-columns:1fr 1fr}.role:last-child{grid-column:span 2}.topbar{align-items:flex-start}.progress-wrap{display:none}.board{min-height:280px}}
+    @media print{.topbar,.nav,.mobile-nav,.controls,.setup-card{display:none!important}.layout{display:block}.panel{display:none!important}#classroom{display:block!important}.shell{max-width:none;padding:0}.card,.board{box-shadow:none;border-color:#bbb}.workbench{display:block}.board{min-height:500px}.board .chip{font-size:1.45rem}}
+  </style>
+</head>
+<body>
+<div class="shell">
+  <header class="topbar"><div class="brand"><div class="mark" aria-hidden="true"><i></i><i></i><i></i><i></i></div><div><h1>Colorful Semantics Studio</h1><small>Learn it by using it</small></div></div><div class="progress-wrap"><span id="progressText">1 of 6 explored</span><div class="progress"><span id="progressBar"></span></div></div></header>
+  <div class="mobile-nav" aria-label="Lessons"></div>
+  <div class="layout">
+    <nav class="nav" aria-label="Lessons"><div class="nav-label">Learn</div><button class="active" data-panel="start"><span class="num">1</span>See the system</button><button data-panel="yellow"><span class="num">2</span>Start with yellow</button><button data-panel="build"><span class="num">3</span>Build a sentence</button><button data-panel="teach"><span class="num">4</span>Try it as a teacher</button><div class="nav-label" style="margin-top:10px">Use it</div><button data-panel="classroom"><span class="num">5</span>Classroom mode</button><button data-panel="coach"><span class="num">6</span>Teacher coach quiz</button><div class="note">Colorful Semantics is a structured approach developed in speech and language therapy. This studio is an introductory practice tool, not official training.</div></nav>
+    <main>
+      <section class="panel active" id="start"><div class="hero"><div class="eyebrow">Lesson 1 · The big idea</div><h2>A sentence becomes easier when you can see what each part is doing.</h2><p>Colorful Semantics separates a sentence into meaningful roles. Instead of asking a learner to “write a better sentence,” you can make the invisible structure visible—one question and one color at a time.</p><div class="role-strip"><div class="role orange"><strong>Who?</strong><span>Mia</span></div><div class="role yellow"><strong>Doing what?</strong><span>is writing</span></div><div class="role green"><strong>What?</strong><span>a story</span></div><div class="role blue"><strong>Where?</strong><span>in class</span></div><div class="role brown"><strong>When?</strong><span>today</span></div></div><p class="fine">Common core colors are shown here. Extensions and exact conventions can differ across resources and settings.</p><button class="cta next" data-next="yellow">Explore yellow →</button></div></section>
 
-        <nav class="top-nav" aria-label="Studio sections">
-          <button class="nav-link is-active" type="button" data-view="lab">Analysis Lab</button>
-          <button class="nav-link" type="button" data-view="library">Practice library</button>
-        </nav>
+      <section class="panel" id="yellow"><div class="card yellow-focus"><div class="eyebrow">Lesson 2 · The hinge</div><h2 class="big-q">What is happening?</h2><p class="section-lead">Yellow marks the action or verb phrase: <b>runs</b>, <b>is opening</b>, <b>will build</b>. Once the action is clear, it becomes much easier to ask who is doing it and what, where, or when belongs with it.</p><div class="why-list"><div class="why-item"><span class="dot"></span><div><b>It gives the sentence energy.</b><br><span class="fine">Without an action, learners may only list people and things.</span></div></div><div class="why-item"><span class="dot"></span><div><b>It carries grammar.</b><br><span class="fine">Tense, agreement, and auxiliary verbs often live inside the yellow part.</span></div></div><div class="why-item"><span class="dot"></span><div><b>It gives you a concrete prompt.</b><br><span class="fine">“What is happening?” is more usable than “Add a verb.”</span></div></div></div></div><div class="card"><h3>Tap the yellow part</h3><p id="spotSentence">The children are building a shelter outside.</p><div class="bank" id="spotBank"></div><div class="feedback warn" id="spotFeedback">Choose the words that answer: “What is happening?”</div><div class="action-row"><button class="cta secondary" id="newSpot">Another sentence</button><button class="cta next" data-next="build">Build one →</button></div></div></section>
 
-        <div class="header-actions">
-          <span class="saved-status"><span class="status-dot"></span>Saved locally</span>
-          <button class="avatar-button" type="button" aria-label="Open profile menu">FO</button>
-        </div>
-      </header>
+      <section class="panel" id="build"><div class="card"><div class="eyebrow">Lesson 3 · Build</div><h2 class="section-title">Make meaning visible</h2><p class="section-lead">Choose one chunk for each role. Notice that the sentence can begin small and grow.</p><div class="sentence" id="sentence" aria-live="polite"><span class="fine">Your sentence will appear here.</span></div><div id="builder"></div><div class="feedback warn" id="buildFeedback">Begin with Who? and Doing what?</div><div class="action-row"><button class="cta" id="checkBuild">Check my sentence</button><button class="cta secondary" id="resetBuild">Reset</button><button class="cta next" data-next="teach">Teacher practice →</button></div></div></section>
 
-      <main id="top">
-        <section class="hero-wrap page-width" aria-labelledby="page-title">
-          <div class="hero-copy">
-            <div class="eyebrow"><span class="eyebrow-line"></span>Professional learning · Language noticing</div>
-            <h1 id="page-title">Notice the meaning<br /><em>before</em> you fix the words.</h1>
-            <p class="hero-intro">
-              Practice reading a learner response for the idea underneath it, then choose the smallest prompt that keeps the thinking moving.
-            </p>
-          </div>
+      <section class="panel" id="teach"><div class="card"><div class="eyebrow">Lesson 4 · Teacher lab</div><h2 class="section-title">Prompt less. Reveal more.</h2><p class="section-lead">Pick a classroom moment. The app gives you a short teaching sequence that moves from meaning to a complete sentence.</p><div class="scenario"><button class="active" data-scenario="picture">Picture talk</button><button data-scenario="writing">Writing conference</button><button data-scenario="retell">Oral retell</button></div><ol class="prompt-ladder" id="ladder"></ol></div><div class="two"><div class="card"><h3>Quick check</h3><p>A student says: “Boy… ball.” What is the most useful first move?</p><button class="quiz-opt" data-answer="a">Ask them to write a complete sentence.</button><button class="quiz-opt" data-answer="b">Show yellow and ask, “What is happening?”</button><button class="quiz-opt" data-answer="c">Correct the missing article first.</button><div class="feedback warn" id="quizFeedback">Choose one response.</div></div><div class="card"><h3>Your five-minute starting routine</h3><ol class="fine" style="font-size:.95rem;line-height:1.7;padding-left:20px"><li>Show one clear picture.</li><li>Ask: “Who?” Place the orange chunk.</li><li>Ask: “What is happening?” Place the yellow chunk.</li><li>Say and tap the two-part sentence together.</li><li>Add only one more color when the meaning is secure.</li></ol><p class="fine">The goal is not to use every color every time. The goal is to help the learner notice and control sentence meaning.</p><button class="cta next" data-next="classroom">Open classroom mode →</button></div></div></section>
 
-          <div class="practice-progress" aria-label="Practice progress">
-            <div class="progress-label"><span>Practice set</span><strong id="progress-count">01 <small>/ 03</small></strong></div>
-            <div class="progress-track"><span id="progress-bar"></span></div>
-            <p>One response, one useful next move.</p>
-          </div>
-        </section>
+      <section class="panel" id="classroom"><div class="eyebrow">Classroom mode</div><h2 class="section-title">Turn one idea into a teachable sentence</h2><p class="section-lead">Choose a familiar example or enter the meaning chunks yourself. Then reveal, remove, and rebuild the sentence with students.</p><div class="workbench"><div class="card setup-card"><label for="preset"><b>Start with an example</b></label><select class="preset" id="preset"><option value="shelter">The children built a shelter at camp.</option><option value="wall">Jasper climbed the wall yesterday.</option><option value="story">Mia is writing a true story in class.</option><option value="bus">Our class rode the bus this morning.</option><option value="custom">Blank sentence</option></select><div class="field-grid" style="margin-top:18px"><div class="field"><label for="fWho">Who? · Orange</label><input id="fWho" data-role="orange" /></div><div class="field"><label for="fDoing">Doing what? · Yellow</label><input id="fDoing" data-role="yellow" /></div><div class="field"><label for="fWhat">What? · Green</label><input id="fWhat" data-role="green" /></div><div class="field"><label for="fWhere">Where? · Blue</label><input id="fWhere" data-role="blue" /></div><div class="field"><label for="fWhen">When? · Brown</label><input id="fWhen" data-role="brown" /></div></div><p class="fine">Leave a role blank when the sentence does not need it. A complete idea does not need every color.</p></div><div class="card"><div class="board" id="classBoard"><div class="board-top"><span class="view-badge" id="viewBadge">Teacher view</span><span class="fine" id="boardCount">5 meaning chunks</span></div><div class="board-prompt" id="boardPrompt">Read the whole sentence once for meaning.</div><div class="board-sentence" id="classSentence"></div></div><div class="action-row controls"><button class="cta" id="revealNext">Reveal next</button><button class="cta secondary" id="toggleView">Student view</button><button class="cta secondary" id="scramble">Scramble</button><button class="cta secondary" id="missing">Remove one</button><button class="cta secondary" id="showAll">Show all</button><button class="cta secondary" id="printBoard">Print</button></div></div></div><div class="card"><h3>What the sequence is doing</h3><p class="section-lead" style="margin-bottom:0">You are reducing the language load without reducing the idea. The questions direct attention to meaning; the colors hold the sentence structure in working memory; the gradual removal checks whether the learner can take control without the visual support.</p><div class="action-row"><button class="cta next" data-next="coach">Quiz my understanding →</button></div></div></section>
 
-        <section class="workspace page-width" aria-label="Student language analysis lab">
-          <div class="workspace-toolbar">
-            <div>
-              <span class="section-kicker">Student Language Analysis Lab</span>
-              <h2 id="sample-title">When the idea is already there</h2>
-            </div>
-            <div class="toolbar-actions">
-              <button class="quiet-button" id="new-response" type="button">
-                <span aria-hidden="true">↻</span> New learner response
-              </button>
-              <button class="classroom-button" id="open-classroom" type="button">
-                Open in Classroom Mode <span aria-hidden="true">↗</span>
-              </button>
-            </div>
-          </div>
+      <section class="panel" id="coach"><div class="card"><div class="coach-head"><div><div class="eyebrow">Teacher coach</div><h2 class="section-title" style="margin-bottom:0">What does the teaching move mean?</h2></div><span class="score-pill" id="scorePill">0 correct</span></div><div class="meter"><span id="quizMeter" style="width:16.6%"></span></div><div id="coachBody"></div></div></section>
+    </main>
+  </div>
+</div>
+<script>
+const panels=['start','yellow','build','teach','classroom','coach']; let visited=new Set(JSON.parse(localStorage.getItem('cs-visited')||'["start"]'));
+const navButtons=[...document.querySelectorAll('.nav button')]; const mobile=document.querySelector('.mobile-nav');
+navButtons.forEach(b=>{const c=b.cloneNode(true);c.querySelector('.num')?.remove();mobile.appendChild(c)});
+function show(id){document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id===id));document.querySelectorAll('[data-panel]').forEach(b=>b.classList.toggle('active',b.dataset.panel===id));visited.add(id);localStorage.setItem('cs-visited',JSON.stringify([...visited]));document.querySelector('#progressText').textContent=`${visited.size} of 6 explored`;document.querySelector('#progressBar').style.width=`${visited.size/6*100}%`;window.scrollTo({top:0,behavior:'smooth'})}
+document.querySelectorAll('[data-panel]').forEach(b=>b.onclick=()=>show(b.dataset.panel));document.querySelectorAll('.next').forEach(b=>b.onclick=()=>show(b.dataset.next));
+document.querySelector('#progressText').textContent=`${visited.size} of 6 explored`;document.querySelector('#progressBar').style.width=`${visited.size/6*100}%`;
+const spots=[{s:'The children are building a shelter outside.',words:['The children','are building','a shelter','outside'],a:1},{s:'Jasper quietly opened his notebook.',words:['Jasper','quietly','opened','his notebook'],a:2},{s:'Our class will visit the museum tomorrow.',words:['Our class','will visit','the museum','tomorrow'],a:1}];let si=0;
+function renderSpot(){let x=spots[si];document.querySelector('#spotSentence').textContent=x.s;document.querySelector('#spotBank').innerHTML=x.words.map((w,i)=>`<button class="chip ${i===x.a?'yellow':''}" data-i="${i}">${w}</button>`).join('');document.querySelector('#spotFeedback').className='feedback warn';document.querySelector('#spotFeedback').textContent='Choose the words that answer: “What is happening?”';document.querySelectorAll('#spotBank .chip').forEach(b=>b.onclick=()=>{let ok=+b.dataset.i===x.a;document.querySelector('#spotFeedback').className='feedback '+(ok?'':'warn');document.querySelector('#spotFeedback').textContent=ok?'Yes. That is the action—the yellow part.':'Not this chunk. Ask yourself: what action is taking place?';});}renderSpot();document.querySelector('#newSpot').onclick=()=>{si=(si+1)%spots.length;renderSpot()};
+const roles=[{q:'Who?',c:'orange',o:['Mia','The class','My friend']},{q:'Doing what?',c:'yellow',o:['is writing','is investigating','is carrying']},{q:'What?',c:'green',o:['a true story','the problem','a heavy bag']},{q:'Where?',c:'blue',o:['in class','at camp','on the bus']},{q:'When?',c:'brown',o:['today','after lunch','this morning']}];let choices={};
+function drawBuilder(){document.querySelector('#builder').innerHTML=roles.map((r,ri)=>`<div><h4>${r.q}</h4><div class="bank">${r.o.map((o,oi)=>`<button class="chip ${r.c} ${choices[ri]===oi?'selected':''}" data-r="${ri}" data-o="${oi}">${o}</button>`).join('')}</div></div>`).join('');document.querySelectorAll('#builder .chip').forEach(b=>b.onclick=()=>{choices[b.dataset.r]=+b.dataset.o;drawBuilder();drawSentence()})}
+function drawSentence(){let words=roles.map((r,i)=>choices[i]===undefined?'':`<span class="chip ${r.c}">${r.o[choices[i]]}</span>`).join('');document.querySelector('#sentence').innerHTML=words||'<span class="fine">Your sentence will appear here.</span>'}drawBuilder();
+document.querySelector('#resetBuild').onclick=()=>{choices={};drawBuilder();drawSentence();document.querySelector('#buildFeedback').textContent='Begin with Who? and Doing what?'};document.querySelector('#checkBuild').onclick=()=>{let n=Object.keys(choices).length,f=document.querySelector('#buildFeedback');f.className='feedback '+(n>=2?'':'warn');f.textContent=n===5?'Complete and richly detailed. Now say it aloud while tapping each color.':n>=2?`Strong core sentence. You used ${n} roles; extra details are optional.`:'Choose at least Who? and Doing what? to make a core sentence.'};
+const scripts={picture:[['Notice','Pause and let the learner look.'],['Who?','Point to the person or animal.'],['What is happening?','Offer two action choices if needed.'],['Say it together','Tap orange, then yellow.'],['Grow it','Add what or where only if useful.']],writing:[['Read for meaning','Ask the learner to read their sentence aloud.'],['Find yellow','“Show me what is happening.”'],['Find orange','“Who is doing that?”'],['Rebuild','Move the chunks, then write the sentence.'],['Re-read','Check whether the sentence says the intended idea.']],retell:[['Recall one moment','Sketch it or choose a picture.'],['Who?','Name the central person.'],['What happened?','Choose the strongest action.'],['Add one detail','Use what, where, or when.'],['Tell it again','Fade the colors as the learner gains control.']]};
+function ladder(k){document.querySelector('#ladder').innerHTML=scripts[k].map(x=>`<li><div><b>${x[0]}</b><span>${x[1]}</span></div></li>`).join('')}ladder('picture');document.querySelectorAll('[data-scenario]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-scenario]').forEach(x=>x.classList.remove('active'));b.classList.add('active');ladder(b.dataset.scenario)});
+document.querySelectorAll('.quiz-opt').forEach(b=>b.onclick=()=>{document.querySelectorAll('.quiz-opt').forEach(x=>x.classList.remove('correct','wrong'));let ok=b.dataset.answer==='b';b.classList.add(ok?'correct':'wrong');let f=document.querySelector('#quizFeedback');f.className='feedback '+(ok?'':'warn');f.textContent=ok?'Exactly. The yellow prompt turns two labels into an event: “The boy kicks the ball.”':'That may come later. First help the learner express the event by finding the action.'});
 
-          <div class="lab-grid">
-            <article class="response-card card-surface">
-              <div class="card-topline">
-                <span class="label-chip" id="sample-subject">SCIENCE EXPLANATION</span>
-                <span class="response-number" id="response-number">Response 01</span>
-              </div>
-              <div class="prompt-block">
-                <span class="mini-label">Teacher prompt</span>
-                <p id="teacher-prompt">What helps a plant grow?</p>
-              </div>
-              <div class="learner-block">
-                <span class="mini-label">Learner response</span>
-                <blockquote id="learner-response">“Plants need water because it help grow.”</blockquote>
-              </div>
-              <div class="response-note">
-                <span class="note-icon" aria-hidden="true">i</span>
-                <p>Read for the message first. The ending is unfinished, but the relationship is visible.</p>
-              </div>
-              <div class="response-footer">
-                <span class="level-tag" id="sample-level">Developing explanation</span>
-                <button class="text-button" id="listen-response" type="button"><span aria-hidden="true">◉</span> Read aloud</button>
-              </div>
-            </article>
+const presets={shelter:['The children','built','a shelter','at camp',''],wall:['Jasper','climbed','the wall','','yesterday'],story:['Mia','is writing','a true story','in class',''],bus:['Our class','rode','the bus','','this morning'],custom:['','','','','']};const inputs=['fWho','fDoing','fWhat','fWhere','fWhen'];const boardRoles=['orange','yellow','green','blue','brown'];const boardQs=['Who?','What is happening?','What?','Where?','When?'];let revealed=5,boardMode='normal',studentView=false,boardOrder=[0,1,2,3,4];
+function loadPreset(k){presets[k].forEach((v,i)=>document.querySelector('#'+inputs[i]).value=v);revealed=5;boardMode='normal';boardOrder=[0,1,2,3,4];drawBoard()}
+function boardData(){return inputs.map((id,i)=>({text:document.querySelector('#'+id).value.trim(),role:boardRoles[i],q:boardQs[i],i})).filter(x=>x.text)}
+function drawBoard(){let data=boardData();if(boardMode==='scramble')data=[...data].sort((a,b)=>boardOrder.indexOf(a.i)-boardOrder.indexOf(b.i));let miss=boardMode==='missing'&&data.length?data.length-1:-1;document.querySelector('#classSentence').innerHTML=data.map((x,i)=>{let visible=i<revealed;let text=i===miss?'_____':x.text;let cls=i===miss?'ghost':x.role;return `<span class="chip ${cls} ${visible?'':'hidden-chunk'}">${text}</span>`}).join('')||'<span class="fine">Add at least Who? and Doing what?</span>';let next=data[Math.min(revealed,data.length-1)];document.querySelector('#boardPrompt').textContent=revealed===0&&next?next.q:revealed<data.length&&next?`Ask: “${next.q}”`:boardMode==='missing'?'Ask the learner to supply the missing meaning chunk.':boardMode==='scramble'?'Ask the learner to rebuild the sentence by meaning.':'Read and tap each meaning chunk together.';document.querySelector('#boardCount').textContent=`${data.length} meaning chunk${data.length===1?'':'s'}`;document.querySelector('#classBoard').classList.toggle('student',studentView);document.querySelector('#viewBadge').textContent=studentView?'Student view':'Teacher view'}
+document.querySelector('#preset').onchange=e=>loadPreset(e.target.value);inputs.forEach(id=>document.querySelector('#'+id).oninput=()=>{revealed=5;boardMode='normal';drawBoard()});document.querySelector('#revealNext').onclick=()=>{if(revealed>=boardData().length)revealed=0;else revealed++;boardMode='normal';drawBoard()};document.querySelector('#showAll').onclick=()=>{revealed=5;boardMode='normal';boardOrder=[0,1,2,3,4];drawBoard()};document.querySelector('#toggleView').onclick=e=>{studentView=!studentView;e.target.textContent=studentView?'Teacher view':'Student view';drawBoard()};document.querySelector('#scramble').onclick=()=>{revealed=5;boardMode='scramble';boardOrder=[...boardData().map(x=>x.i)].sort(()=>Math.random()-.5);drawBoard()};document.querySelector('#missing').onclick=()=>{revealed=5;boardMode='missing';drawBoard()};document.querySelector('#printBoard').onclick=()=>window.print();loadPreset('shelter');
 
-            <section class="analysis-column" aria-labelledby="meaning-heading">
-              <div class="analysis-step">
-                <div class="step-heading">
-                  <span class="step-number">1</span>
-                  <div>
-                    <span class="mini-label">Meaning check</span>
-                    <h3 id="meaning-heading">What meaning is present or missing?</h3>
-                  </div>
-                </div>
-                <p class="step-help">Select all that apply. Your job is to name the message, not grade the sentence.</p>
-
-                <div class="meaning-options" id="meaning-options">
-                  <button class="meaning-option" type="button" data-meaning="water" aria-pressed="false">
-                    <span class="option-icon">✓</span>
-                    <span><strong>The plant needs water</strong><small>Key idea is communicated</small></span>
-                  </button>
-                  <button class="meaning-option" type="button" data-meaning="cause" aria-pressed="false">
-                    <span class="option-icon">→</span>
-                    <span><strong>Water helps it grow</strong><small>A cause-and-effect link is attempted</small></span>
-                  </button>
-                  <button class="meaning-option" type="button" data-meaning="detail" aria-pressed="false">
-                    <span class="option-icon">＋</span>
-                    <span><strong>A specific detail about how</strong><small>Useful detail is still missing</small></span>
-                  </button>
-                </div>
-                <div class="selection-feedback" id="meaning-feedback" role="status" aria-live="polite">
-                  Start by naming the meaning you can already hear.
-                </div>
-              </div>
-
-              <div class="analysis-step prompt-step">
-                <div class="step-heading">
-                  <span class="step-number">2</span>
-                  <div>
-                    <span class="mini-label">Smallest useful prompt</span>
-                    <h3>What would you ask next?</h3>
-                  </div>
-                  <span class="quiz-pill">Quick quiz</span>
-                </div>
-                <p class="step-help">Choose the prompt that adds just enough support for this learner to extend the idea.</p>
-
-                <div class="prompt-options" id="prompt-options">
-                  <button class="prompt-option" type="button" data-correct="false">
-                    <span class="option-letter">A</span>
-                    <span>Can you say that again correctly?</span>
-                  </button>
-                  <button class="prompt-option" type="button" data-correct="true">
-                    <span class="option-letter">B</span>
-                    <span>Tell me more about how water helps it grow.</span>
-                  </button>
-                  <button class="prompt-option" type="button" data-correct="false">
-                    <span class="option-letter">C</span>
-                    <span>What are the three things a plant needs?</span>
-                  </button>
-                </div>
-                <div class="prompt-feedback" id="prompt-feedback" role="status" aria-live="polite" hidden></div>
-              </div>
-            </section>
-
-            <aside class="reasoning-card card-surface" aria-labelledby="reasoning-heading">
-              <div class="reasoning-header">
-                <div>
-                  <span class="mini-label">Your reasoning</span>
-                  <h3 id="reasoning-heading">Keep the idea in view</h3>
-                </div>
-                <span class="spark-icon" aria-hidden="true">✦</span>
-              </div>
-              <div class="reasoning-list">
-                <div class="reasoning-row" data-reason="meaning">
-                  <span class="reasoning-check">1</span>
-                  <div><strong>Meaning before form</strong><p>Name what the learner is communicating.</p></div>
-                </div>
-                <div class="reasoning-row" data-reason="bridge">
-                  <span class="reasoning-check">2</span>
-                  <div><strong>Build a bridge</strong><p>Keep the original idea; invite one useful extension.</p></div>
-                </div>
-                <div class="reasoning-row" data-reason="recast">
-                  <span class="reasoning-check">3</span>
-                  <div><strong>Model, don’t replace</strong><p>Leave room for the learner to do the next piece.</p></div>
-                </div>
-              </div>
-              <button class="reveal-button" id="reveal-reasoning" type="button">Reveal the reasoning <span aria-hidden="true">↓</span></button>
-              <div class="reasoning-reveal" id="reasoning-reveal" hidden>
-                <p><strong>Why B is smallest:</strong> the message already has a topic and a reason. The prompt asks for one more detail without starting over or demanding a full correction.</p>
-              </div>
-              <div class="coach-note"><span aria-hidden="true">✦</span><p><strong>Coach’s note:</strong> A prompt is useful when it changes the learner’s next move—not when it makes the teacher’s sentence look finished.</p></div>
-            </aside>
-          </div>
-        </section>
-
-        <section class="library-preview page-width" id="library-panel" aria-labelledby="library-heading">
-          <div class="library-heading">
-            <div>
-              <span class="section-kicker">Keep practicing</span>
-              <h2 id="library-heading">Three ways to read a response</h2>
-            </div>
-            <button class="text-button" id="view-library" type="button">View all examples <span aria-hidden="true">→</span></button>
-          </div>
-          <div class="sample-cards" id="sample-cards">
-            <button class="sample-card is-selected" type="button" data-sample="0">
-              <span class="sample-color color-sun"></span><span><strong>Explain a process</strong><small>Science · Cause & effect</small></span><span class="sample-arrow">↗</span>
-            </button>
-            <button class="sample-card" type="button" data-sample="1">
-              <span class="sample-color color-coral"></span><span><strong>Retell an event</strong><small>Narrative · Sequence</small></span><span class="sample-arrow">↗</span>
-            </button>
-            <button class="sample-card" type="button" data-sample="2">
-              <span class="sample-color color-blue"></span><span><strong>Make a claim</strong><small>Opinion · Evidence</small></span><span class="sample-arrow">↗</span>
-            </button>
-          </div>
-        </section>
-      </main>
-
-      <div class="classroom-overlay" id="classroom-overlay" hidden>
-        <div class="classroom-shell">
-          <header class="classroom-header">
-            <div class="brand compact"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span><strong>Colorful Semantics</strong><small>Classroom Mode</small></span></div>
-            <button class="quiet-button light" id="close-classroom" type="button"><span aria-hidden="true">×</span> Back to analysis</button>
-          </header>
-          <main class="classroom-main" aria-labelledby="classroom-title">
-            <div class="classroom-context"><span class="label-chip">SCIENCE EXPLANATION</span><span>Think · Talk · Extend</span></div>
-            <h1 id="classroom-title">What helps a plant grow?</h1>
-            <p class="classroom-instruction">Read the response. What idea can you hear?</p>
-            <div class="classroom-response">“Plants need water because it help grow.”</div>
-            <div class="classroom-actions" id="classroom-actions">
-              <button type="button" class="classroom-choice" data-classroom="idea"><span aria-hidden="true">✓</span><span><strong>I can hear an idea.</strong><small>The plant needs water.</small></span></button>
-              <button type="button" class="classroom-choice" data-classroom="detail"><span aria-hidden="true">＋</span><span><strong>I want to add a detail.</strong><small>How does water help?</small></span></button>
-            </div>
-            <div class="classroom-next" id="classroom-next" hidden>
-              <span class="next-icon" aria-hidden="true">→</span>
-              <div><span class="mini-label">Try this next</span><p>Tell me more about how water helps it grow.</p></div>
-            </div>
-          </main>
-          <footer class="classroom-footer"><span>Teacher view · Example 01</span><span>← You can return to the lab at any time</span></footer>
-        </div>
-      </div>
-    </div>
-    <script src="app.js"></script>
-  </body>
-</html>
+const coachQuestions=[
+ {q:'A learner says, “Boy… ball.” Why begin with the yellow action?',o:['Because verbs must always be taught before nouns.','Because an action turns two labels into an event the learner can express.','Because yellow words are easier to pronounce.'],a:1,why:'Colorful Semantics begins with meaning. Finding the action helps the learner connect the boy and the ball into an event, such as “The boy kicks the ball.”',concept:'The color is not the lesson. The color makes a meaning relationship visible.'},
+ {q:'What is the main purpose of the colors?',o:['To decorate the sentence so children pay attention.','To replace explicit language teaching.','To externalize sentence roles and reduce the working-memory load.'],a:2,why:'The learner does not have to hold every part of the sentence structure mentally. The visual system temporarily carries some of that load.',concept:'Colors are cognitive scaffolds, not rewards or decoration.'},
+ {q:'A student produces “Mia is writing.” Should you require all five colors?',o:['Yes. Every correct sentence needs all five colors.','No. Keep the complete idea and add a role only when it improves the intended meaning.','Yes, but only in writing.'],a:1,why:'“Mia is writing” is already a complete core idea. Colorful Semantics supports meaning; it should not turn sentence expansion into box-filling.',concept:'More colors do not automatically mean better language.'},
+ {q:'When should you begin fading the colored support?',o:['Only after the entire class can use every color.','As soon as a learner can construct that sentence pattern with less prompting.','Never; consistency is more important than independence.'],a:1,why:'Scaffolds should transfer control to the learner. You can remove words, then questions, then colors while checking whether meaning remains secure.',concept:'The destination is independent language, not permanent dependence on the scaffold.'},
+ {q:'A multilingual learner understands the picture but does not know the English verb. What is the best support?',o:['Offer two action choices and model the verb phrase.','Wait silently until the learner remembers the word.','Move to a grammar worksheet first.'],a:0,why:'This separates a vocabulary gap from a sentence-structure gap. Supplying a small choice lets the learner participate in constructing the meaning.',concept:'Language support can provide vocabulary without taking away the learner’s thinking.'},
+ {q:'What may belong inside the yellow chunk?',o:['Only a single base verb, such as “write.”','The action phrase, including helping verbs: “is writing” or “will build.”','Every word that comes after the subject.'],a:1,why:'Yellow represents what is happening, so the meaningful unit may be a verb phrase rather than one isolated word.',concept:'Teach useful meaning chunks, not disconnected grammar labels.'}
+];let qi=0,score=0,answered=false;
+function renderCoach(){let body=document.querySelector('#coachBody');document.querySelector('#quizMeter').style.width=`${(qi+1)/coachQuestions.length*100}%`;document.querySelector('#scorePill').textContent=`${score} correct`;if(qi>=coachQuestions.length){body.innerHTML=`<div class="coach-result"><span class="eyebrow">Reflection complete</span><strong>${score}/${coachQuestions.length}</strong><p>${score>=5?'You understand the central idea: the system makes sentence meaning visible and then gradually returns control to the learner.':'The important shift is already happening: you are thinking about what each teaching move does for the learner, not merely memorizing colors.'}</p><button class="cta" id="restartQuiz">Try again</button></div>`;document.querySelector('#quizMeter').style.width='100%';document.querySelector('#restartQuiz').onclick=()=>{qi=0;score=0;answered=false;renderCoach()};return}let x=coachQuestions[qi];body.innerHTML=`<div class="eyebrow">Scenario ${qi+1} of ${coachQuestions.length}</div><h3 style="font-size:1.25rem;line-height:1.45">${x.q}</h3><div id="coachOptions">${x.o.map((o,i)=>`<button class="coach-opt" data-i="${i}">${o}</button>`).join('')}</div><div id="coachExplain"></div>`;answered=false;document.querySelectorAll('.coach-opt').forEach(b=>b.onclick=()=>answerCoach(+b.dataset.i))}
+function answerCoach(i){if(answered)return;answered=true;let x=coachQuestions[qi],ok=i===x.a;if(ok)score++;document.querySelector('#scorePill').textContent=`${score} correct`;document.querySelectorAll('.coach-opt').forEach((b,j)=>{if(j===x.a)b.classList.add('correct');else if(j===i)b.classList.add('wrong')});document.querySelector('#coachExplain').innerHTML=`<div class="feedback ${ok?'':'warn'}"><b>${ok?'Yes.':'Not quite.'}</b> ${x.why}</div><div class="concept"><b>Underlying idea</b><br>${x.concept}</div><div class="action-row"><button class="cta" id="nextCoach">${qi===coachQuestions.length-1?'See my result':'Next scenario →'}</button></div>`;document.querySelector('#nextCoach').onclick=()=>{qi++;renderCoach()}}
+renderCoach();
+</script>
+</body></html>

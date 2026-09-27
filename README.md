@@ -1,16 +1,8 @@
 # Colorful Semantics Studio
 
-Local foundation for the year-long Colorful Semantics professional-learning and classroom-tool project.
+The GitHub Pages copy of the original Colorful Semantics Studio built with Codex Sites. It is a small, dependency-free learning tool for seeing sentence roles, building sentences, trying teacher prompts, and using the same colors in classroom mode.
 
-## Current feature
-
-The Student Language Analysis Lab gives a teacher three connected moves:
-
-1. Read a learner response and identify the meaning that is present or missing.
-2. Choose the smallest useful prompt for the learner's next move.
-3. Reveal the reasoning, then open the example in a simplified Classroom Mode.
-
-The prototype is intentionally dependency-free so the interaction can be tested quickly while the project direction is still developing. It is a static page composed of `index.html`, `styles.css`, and `app.js`.
+The site is intentionally a single static file: `index.html`.
 
 ## Run locally
 
@@ -22,9 +14,7 @@ python3 -m http.server 4173
 
 Then open <http://localhost:4173>.
 
-## Next build seams
+## Hosted versions
 
-- Persist teacher practice history and notes.
-- Move examples into structured data or a small content API.
-- Add more response types and classroom-facing prompt variants.
-- Add a project-level authentication and sharing layer when the hosted app source is connected.
+- Original Codex Site: <https://colorful-semantics-studio.pikaturtle.chatgpt.site>
+- GitHub Pages mirror: <https://lenguajelabs-design.github.io/colorful-semantics-/>
