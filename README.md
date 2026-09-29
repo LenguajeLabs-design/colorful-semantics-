@@ -1,8 +1,8 @@
 # Colorful Semantics Studio
 
-The GitHub Pages copy of the original Colorful Semantics Studio built with Codex Sites. It is a small, dependency-free learning tool for seeing sentence roles, building sentences, trying teacher prompts, and using the same colors in classroom mode.
+The GitHub Pages copy of the original Colorful Semantics Studio built with Codex Sites. It is a small, dependency-free learning tool for seeing sentence roles, building sentences, playing the Color Quest card game, trying teacher prompts, and using the same colors in classroom mode.
 
-The site is intentionally a single static file: `index.html`.
+The site is intentionally a single static file: `index.html`. Color Quest uses emoji as lightweight, reusable picture cues so learners can practise oral English without needing image downloads or accounts.
 
 ## Run locally
 
